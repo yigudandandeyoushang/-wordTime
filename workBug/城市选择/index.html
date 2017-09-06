@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="area.css">
+  <title>城市选择</title>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <h4>被保险人信息</h4>
+    </li>
+    <li><span>姓名</span><input type="text" id="name" name="name" placeholder="请输入被保人姓名"><b>不能为空</b></li>
+    <li><span>身份证号</span><input type="text" id="num" name="idCard" maxlength="18" placeholder="请输入被保人身份证号"><b>不能为空</b></li>
+    <li><span>手机号码</span><input type="tel" id="tel" name="mobile" maxlength="11" placeholder="请输入被保人手机号码"><b>不能为空</b></li>
+    <li>
+      <span class="left_name">所在省份</span>
+      <span id="city_model">请选择</span>
+      <input id="city_name" type="hidden" name="city_name" placeholder="请选择" value="">
+      <input id="city_val" type="hidden" name="city_val" value="">
+      <u class="selecticon"></u>
+    </li>
+    <li>
+      <span>登录密码</span><input type="password" id="password" maxlength="16" placeholder="请输入被保人的登录密码">
+      <b>不能为空</b>
+      <i class="passwordIco"></i>
+    </li>
+    <li class="tipText">
+      *请提交您在122.gov.cn的登录密码，密码仅用于理赔，平台不会留存。
+    </li>
+  </ul>
+  <script src="jq.js"></script>
+  <script src="area.js"></script>
+  <script src="areaChange.js"></script>
+  <script>
+
+    var personInfo={
+        name:'',
+        idCard:'',
+        sex:'',
+        birthday:'',
+        city:'',
+        cityValue:'',
+        productCode:'',
+        mobile:'',
+        provinceCode:'',
+        cityCode:''
+    };
+    $("#city_model").html(personInfo.city||'请选择');
+    $("#city_name").val(personInfo.city);
+    $("#city_val").val(personInfo.city_val);
+
+    selectCity();  //设置省市插件
+
+    //选择学车城市并缓存
+    $("#city_name").focus(function(event) {
+        personInfo.city=$('#city_name').val();
+        personInfo.city_val=$('#city_val').val();
+    });
+
+    /*调用省市插件*/
+    function selectCity(){
+        var area1 = new LArea();
+        area1.init({
+            'trigger': '#city_model', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+            'valueTo': '#city_val', //选择完毕后id属性输出到该位置
+            'nameTo': '#city_name', //选择完毕后id属性输出到该位置
+            'keys': {
+                id: 'id',
+                name: 'name'
+            },
+            'type': 1, //数据源类型
+            'data': LAreaData //数据源
+        });
+    }
+  </script>
+</body>
+
+</html>

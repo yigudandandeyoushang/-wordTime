@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function index() {
+        //图片预加载
+        var baseUrl = "img/";
+        var LoadImg = {
+            _load: function(obj, callback) {
+                var img = new Image();
+                img.onload = function() {
+                    callback();
+                }
+                img.src = baseUrl + obj.src;
+            },
+            load: function(imgSoure, index, callback) {
+                var _index = index || 0;
+                if (imgSoure[_index]) {
+                    LoadImg._load(imgSoure[_index], function() {
+                        LoadImg.load(imgSoure, _index + 1, callback);
+                    })
+                } else {
+                    callback();
+                }
+            }
+        }
+        var dataImg = {
+            "data": [{
+                "src": 'open_bg.jpg'
+            }, {
+                "src": 'open_title.png'
+            }, {
+                "src": 'open_text.png'
+            }, {
+                "src": 'open_button.png'
+            }, {
+                "src": 'maruko_bg.jpg'
+            }, {
+                "src": 'maruko_person.png'
+            }, {
+                "src": 'maruko_text_right.png'
+            }, {
+                "src": 'maruko_text_error.png'
+            }, {
+                "src": 'maruko_title.png'
+            }, {
+                "src": 'maruko_star.png'
+            }, {
+                "src": 'cat_bg.jpg'
+            }, {
+                "src": 'cat_person.png'
+            }, {
+                "src": 'cat_star.png'
+            }, {
+                "src": 'cat_text_right.png'
+            }, {
+                "src": 'cat_text_error.png'
+            }, {
+                "src": 'cat_title.png'
+            }, {
+                "src": 'd_cup.png'
+            }, {
+                "src": 'c_cup.png'
+            }, {
+                "src": 'e_cup.png'
+            }, {
+                "src": 'mermaid_bg.jpg'
+            }, {
+                "src": 'mermaid_person.png'
+            }, {
+                "src": 'mermaid_star.png'
+            }, {
+                "src": 'mermaid_text_right.png'
+            }, {
+                "src": 'mermaid_text_error.png'
+            }, {
+                "src": 'mermaid_title.png'
+            }, {
+                "src": 'princess_bg.jpg'
+            }, {
+                "src": 'princess_person.png'
+            }, {
+                "src": 'princess_star.png'
+            }, {
+                "src": 'princess_text_right.png'
+            }, {
+                "src": 'princess_text_error.png'
+            }, {
+                "src": 'princess_title.png'
+            }, {
+                "src": 'qrcode.jpg'
+            }, {
+                "src": 'share_bg.jpg'
+            }, {
+                "src": 'share_footer.png'
+            }, {
+                "src": 'share_title.png'
+            }, {
+                "src": 'finish_arrow.png'
+            }, {
+                "src": 'finish_share.png'
+            }, {
+                "src": 'finish_title.png'
+            }, {
+                "src": 'maruko_bg.jpg'
+            }, {
+                "src": 'maruko_person.png'
+            }, {
+                "src": 'maruko_text_right.png'
+            }, {
+                "src": 'maruko_text_error.png'
+            }, {
+                "src": 'maruko_star.png'
+            }, {
+                "src": 'next.png'
+            }, {
+                "src": 'mermaid_bg.jpg'
+            }, {
+                "src": 'mermaid_person.png'
+            }, {
+                "src": 'mermaid_star.png'
+            }, {
+                "src": 'mermaid_text_right.png'
+            }, {
+                "src": 'mermaid_text_error.png'
+            }, {
+                "src": 'mermaid_title.png'
+            }, {
+                "src": 'arrow_top_left.png'
+            }, {
+                "src": 'arrow_top_right.png'
+            }, {
+                "src": 'music_on.png'
+            }, {
+                "src": 'music_off.png'
+            }, {
+                "src": 'error.png'
+            }, {
+                "src": 'right.png'
+            }, {
+                "src": 'mermaid_title.png'
+            }, {
+                "src": 'options.png'
+            }]
+        }
+        LoadImg.load(dataImg.data, 0, main);
+
+        function main() {
+            
+        }
+    }
+    </script>
+</body>
+
+</html>
